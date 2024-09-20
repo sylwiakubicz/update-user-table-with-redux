@@ -25,6 +25,10 @@ const fetchUserDataSlice = createSlice({
                 );
             });
         },
+        applySort: (state, action) => {
+            state.filterUsers.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+            console.log(state.filterUsers)
+        },
         resetFilters: (state) => {
             return {
                 ...state,
@@ -78,6 +82,6 @@ export const fetchUsers = createAsyncThunk<User[],void,{ rejectValue: string }>(
 
 )
 
-export const { applyFilters, resetFilters} = fetchUserDataSlice.actions;
+export const { applyFilters, applySort, resetFilters} = fetchUserDataSlice.actions;
 
 export default fetchUserDataSlice.reducer;
