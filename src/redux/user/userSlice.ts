@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FetchUserDataState } from "../../interfaces/fetchUserDataState";
 import { User } from "../../interfaces/User";
 import axios from "axios";
+import { SortProperties } from "../../interfaces/sortProperties";
 
 const initialState : FetchUserDataState = {
     loading: false,
@@ -25,9 +26,32 @@ const fetchUserDataSlice = createSlice({
                 );
             });
         },
-        applySort: (state, action) => {
-            state.filterUsers.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
-            console.log(state.filterUsers)
+        applySort: (state, action : PayloadAction<SortProperties>) => {
+            const {columnName, sortDirection} = action.payload
+            state.filterUsers = state.filterUsers.sort((a,b : User) => {
+                if (sortDirection === 'ASC') {
+                    if (columnName === 'name') {
+                        return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+                    } else if (columnName === 'username') {
+                        return (a.username.toLowerCase().localeCompare(b.username.toLowerCase()))
+                    } else if (columnName === 'email') {
+                        return (a.email.toLowerCase().localeCompare(b.email.toLowerCase()))
+                    } else {
+                        return (a.phone.localeCompare(b.phone))
+                    }
+                }
+                else {
+                    if (columnName === 'name') {
+                        return (b.name.toLowerCase().localeCompare(a.name.toLowerCase()))
+                    } else if (columnName === 'username') {
+                        return (b.username.toLowerCase().localeCompare(a.username.toLowerCase()))
+                    } else if (columnName === 'email') {
+                        return (b.email.toLowerCase().localeCompare(a.email.toLowerCase()))
+                    } else {
+                        return (b.phone.localeCompare(a.phone))
+                    }
+                }
+            })
         },
         resetFilters: (state) => {
             return {
