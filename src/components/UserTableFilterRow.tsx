@@ -8,6 +8,7 @@ import SortArrows from './SortArrows';
 
 function UserTableFilterRow() {
     
+    const sortProps = useSelector((state : RootState) => state.userSort)
     const usersFilters = useSelector((state : RootState) => state.userFilters)
     const dispatch = useDispatch<AppDispatch>();
 
@@ -27,7 +28,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setNameFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows colName='name' />
+                <SortArrows colName='name' activeSort={sortProps.columnName === 'name'} />
             </div>
 
         </th>
@@ -40,7 +41,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setUsernameFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows colName='username'/>
+                <SortArrows colName='username' activeSort={sortProps.columnName === 'username'} />
             </div>
         </th>
         <th className='pl-6 pb-2'>
@@ -52,7 +53,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setEmailFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows colName='email'/>
+                <SortArrows colName='email' activeSort={sortProps.columnName === 'email'} />
             </div>
 
         </th>
@@ -65,7 +66,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setPhoneFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows colName='phone'/>
+                <SortArrows colName='phone' activeSort={sortProps.columnName === 'phone'} />
             </div>
         </th>
     </tr>

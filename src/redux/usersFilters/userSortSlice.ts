@@ -3,7 +3,7 @@ import { SortProperties } from "../../interfaces/sortProperties";
 
 const initialState : SortProperties = {
     sortDirection: 'ASC',
-    columnName: 'name'
+    columnName: ''
 }
 
 const userSortSlice = createSlice({
