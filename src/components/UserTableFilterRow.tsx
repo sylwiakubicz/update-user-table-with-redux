@@ -27,7 +27,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setNameFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows />
+                <SortArrows colName='name' />
             </div>
 
         </th>
@@ -40,7 +40,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setUsernameFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows />
+                <SortArrows colName='username'/>
             </div>
         </th>
         <th className='pl-6 pb-2'>
@@ -52,7 +52,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setEmailFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows />
+                <SortArrows colName='email'/>
             </div>
 
         </th>
@@ -65,7 +65,7 @@ function UserTableFilterRow() {
                 onChange={(e) => dispatch(setPhoneFilter(e.target.value))}
                 className="flex-grow px-2 py-1 h-9 font-light placeholder:opacity-70 border-[1px] border-gray-200 dark:border-dark-secondary dark:bg-dark-text dark:placeholder:text-dark-secondary dark:text-dark-secondary focus-visible:outline-none"
                 />
-                <SortArrows />
+                <SortArrows colName='phone'/>
             </div>
         </th>
     </tr>
